@@ -5,8 +5,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
-    "lint": "run-p test-types lint-typescript prettier-check lint-eslint lint-language",
-    "lint-fix": "pnpm prettier-fix && eslint . --ext js,jsx,ts,tsx --fix --max-warnings=0 --config .eslintrc.json --no-eslintrc"
+    "lint": "next lint"
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -21,6 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
+    "@next/eslint-plugin-next": "^13.1.6",
     "@types/node": "^18.0.3",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
