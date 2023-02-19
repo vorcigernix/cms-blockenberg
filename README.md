@@ -4,7 +4,7 @@ This is the typescript version of Next.js Blog Starter [blog-starter](https://gi
 
 This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using your IPFS files as the data source. You can easily create a new content on [Blockenberg](https://blockenberg.fission.app) and you need your Blockenberg token to find your posts on IPFS.
 
-The token is on your account settings page (click on the Avatar) and it needs to be present on the environment. For local development you can rename .local.env.sample file to .local.env and fill your token in. 
+The token is on your account settings page (click on the Avatar) and it needs to be present on the environment. For local development you can rename .local.env.sample file to .local.env and fill your token in.
 
 ## Demo
 
