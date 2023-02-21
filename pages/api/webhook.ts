@@ -4,8 +4,11 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (isUpRequest) return res.status(202).json({ message: 'alive' })
     const pathToRevalidate = getPathToRevalidate(req)
-    if (!pathToRevalidate) res.status(202).json({ message: 'alive' })
+    if (!pathToRevalidate)
+      return res.status(401).json({ message: 'Invalid request' })
+
     await res.revalidate(pathToRevalidate)
     return res.json({ revalidated: true })
   } catch (err) {
@@ -17,6 +20,11 @@ const isValidRequest = (req) => {
   const signature = req.headers['x-blocken-signature']
   return signature == process.env.BLOCKEN_TOKEN
 }
+
+const isUpRequest = (req) => {
+  return req.body.article === 'alive'
+}
+
 const getPathToRevalidate = (req) => {
   if (!req.body.article) return
   return `/posts/${req.body.article}`
