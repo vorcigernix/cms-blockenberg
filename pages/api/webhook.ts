@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
   try {
     const pathToRevalidate = getPathToRevalidate(req)
-    if (!pathToRevalidate) res.status(400).json({ message: 'missing article' })
+    if (!pathToRevalidate) res.status(202).json({ message: 'alive' })
     await res.revalidate(pathToRevalidate)
     return res.json({ revalidated: true })
   } catch (err) {

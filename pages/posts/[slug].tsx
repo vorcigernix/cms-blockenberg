@@ -17,6 +17,7 @@ type Props = {
 }
 
 export default function Post({ post, morePosts, preview }: Props) {
+  //console.log(post)
   const router = useRouter()
   const exampleText = post.title || `Next.js Blog Example with {CMS_NAME}`
   if (!router.isFallback && !post?.slug) {
@@ -58,7 +59,7 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const post: PostType = await getPostByCID(params.slug)
-  //console.log(post);
+  console.info('generating ' + params.slug)
   return {
     props: {
       post: {
@@ -79,6 +80,6 @@ export async function getStaticPaths() {
         },
       }
     }),
-    fallback: false,
+    fallback: 'blocking',
   }
 }
