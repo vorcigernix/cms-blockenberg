@@ -10,7 +10,7 @@ type Props = {
   coverImage: string
   date: string
   excerpt: string
-  author: Author
+  author: string
   slug: string
 }
 
@@ -55,7 +55,7 @@ const PostPreview = ({
         className="text-lg leading-relaxed mb-4"
         dangerouslySetInnerHTML={createMarkup(excerpt)}
       />
-      <Avatar name={author.name} />
+      <Avatar name={author} />
     </div>
   )
 }
