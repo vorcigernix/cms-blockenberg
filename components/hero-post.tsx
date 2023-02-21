@@ -9,7 +9,7 @@ type Props = {
   coverImage: string
   date: string
   excerpt: string
-  author: Author
+  author: string
   slug: string
 }
 
@@ -46,7 +46,7 @@ const HeroPost = ({
             className="text-lg leading-relaxed mb-4"
             dangerouslySetInnerHTML={{ __html: excerpt }}
           />
-          <Avatar name={author.name} picture={author.picture} />
+          <Avatar name={author} />
         </div>
       </div>
     </section>

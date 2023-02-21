@@ -3,12 +3,8 @@ import Post from '../interfaces/post'
 import { formatISO } from 'date-fns'
 import PostType from '../interfaces/post'
 
-const token = process.env.BLOCKEN_TOKEN
 
-const anon = {
-  name: 'Anon',
-  picture: 'https://source.unsplash.com/random/100x100/?person',
-}
+const token = process.env.BLOCKEN_TOKEN
 
 export async function getAllPosts() {
   const documents = await lookup(token)
@@ -19,8 +15,8 @@ export async function getAllPosts() {
     title: apiObject.post.header,
     date: formatISO(new Date(apiObject.updated)),
     coverImage: apiObject.image,
-    author: anon,
-    excerpt: String(apiObject.post.content).slice(0, 200) + '...',
+    author: apiObject.post.author || 'anon',
+    excerpt: apiObject.post.content,
     ogImage: { url: apiObject.image },
     content: apiObject.post.content,
   }))
@@ -49,7 +45,7 @@ export async function getPostByCID(cid: string) {
     title: resultjson.header,
     date: resultjson.ctime || null,
     coverImage: image,
-    author: anon,
+    author: resultjson.author || 'anon',
     excerpt: '',
     ogImage: {
       url: image,
