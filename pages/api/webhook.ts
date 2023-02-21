@@ -17,6 +17,7 @@ export default async function handler(req, res) {
 
 const isValidRequest = (req) => {
   const signature = req.headers['x-blocken-signature']
+  console.log(signature, process.env.BLOCKEN_TOKEN)
   return signature == process.env.BLOCKEN_TOKEN
 }
 
