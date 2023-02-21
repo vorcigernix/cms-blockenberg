@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
   }
   if (!isValidRequest(req)) {
     return res.status(401).json({ message: 'Invalid request' })
@@ -10,11 +10,12 @@ export default async function handler(req, res) {
   try {
     const pathToRevalidate = getPathToRevalidate(req)
     if (!pathToRevalidate) return res.status(202).json({ message: 'Alive' })
-
+    console.info('revalidating ', pathToRevalidate)
     await res.revalidate(pathToRevalidate)
     return res.json({ revalidated: true })
   } catch (err) {
-    return res.status(500).json({ message: 'Error revalidating: ' + err })
+    console.error(err)
+    return res.status(500).json({ message: 'Error revalidating' })
   }
 }
 
