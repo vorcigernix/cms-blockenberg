@@ -1,4 +1,8 @@
 export default async function handler(req, res) {
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
+  }
   if (!isValidRequest(req)) {
     return res.status(401).json({ message: 'Invalid request' })
   }
