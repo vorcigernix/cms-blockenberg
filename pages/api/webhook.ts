@@ -5,8 +5,7 @@ export default async function handler(req, res) {
 
   try {
     const pathToRevalidate = getPathToRevalidate(req)
-    if (!pathToRevalidate)
-      return res.status(401).json({ message: 'Invalid request' })
+    if (!pathToRevalidate) return res.status(202).json({ message: 'Alive' })
 
     await res.revalidate(pathToRevalidate)
     return res.json({ revalidated: true })
@@ -17,7 +16,7 @@ export default async function handler(req, res) {
 
 const isValidRequest = (req) => {
   const signature = req.headers['x-blocken-signature']
-  console.log(signature, process.env.BLOCKEN_TOKEN)
+  //console.log(signature, process.env.BLOCKEN_TOKEN)
   return signature == process.env.BLOCKEN_TOKEN
 }
 
