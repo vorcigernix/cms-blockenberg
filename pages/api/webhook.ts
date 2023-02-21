@@ -1,3 +1,4 @@
+const delay = async (ms: number) => new Promise((res) => setTimeout(res, ms))
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     res.status(200).end()
@@ -11,6 +12,8 @@ export default async function handler(req, res) {
     const pathToRevalidate = getPathToRevalidate(req)
     if (!pathToRevalidate) return res.status(202).json({ message: 'Alive' })
     console.info('revalidating ', pathToRevalidate)
+    //yeah - lame
+    await delay(1000)
     await res.revalidate(pathToRevalidate)
     return res.json({ revalidated: true })
   } catch (err) {
