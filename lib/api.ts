@@ -36,7 +36,6 @@ export async function getPostByCID(cid: string) {
   console.log(result)
   const resultjson = await result.json()
   const imagejson = JSON.parse(decodeURI(resultjson.image))
-  //console.log(imagejson)
   const image = `https://ipfs.runfission.com/ipfs/${String(
     imagejson.cid
   ).replace(/[CID\(\)]/g, '')}/userland`

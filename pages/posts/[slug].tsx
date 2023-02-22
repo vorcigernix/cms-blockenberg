@@ -59,7 +59,7 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const post: PostType = await getPostByCID(params.slug)
-  console.info('generating ' + params.slug)
+  //console.info('generating ' + params.slug)
   return {
     props: {
       post: {
