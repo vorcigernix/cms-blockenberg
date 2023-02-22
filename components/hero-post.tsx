@@ -2,7 +2,7 @@ import Avatar from './avatar'
 import DateFormatter from './date-formatter'
 import CoverImage from './cover-image'
 import Link from 'next/link'
-import type Author from '../interfaces/author'
+import sanitizeHtml from 'sanitize-html'
 
 type Props = {
   title: string
@@ -11,6 +11,18 @@ type Props = {
   excerpt: string
   author: string
   slug: string
+}
+
+function createMarkup(markup) {
+  //console.log(markup)
+  const sanitized = sanitizeHtml(markup, {
+    allowedTags: ['b', 'i', 'em', 'strong', 'a', 'p'],
+    allowedAttributes: {},
+  })
+  const excerpt = sanitizeHtml(sanitized.split(/\s+/).slice(0, 40).join(' '))
+  return {
+    __html: excerpt,
+  }
 }
 
 const HeroPost = ({
@@ -44,7 +56,7 @@ const HeroPost = ({
         <div>
           <div
             className="text-lg leading-relaxed mb-4"
-            dangerouslySetInnerHTML={{ __html: excerpt }}
+            dangerouslySetInnerHTML={createMarkup(excerpt)}
           />
           <Avatar name={author} />
         </div>
