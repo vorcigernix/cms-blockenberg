@@ -1,29 +1,31 @@
 import cn from 'classnames'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
-type Props = {
+interface Props {
   title: string
   src: string
   slug?: string
 }
 
-const CoverImage = ({ title, src, slug }: Props) => {
+export default function CoverImage({ title, src, slug }: Props) {
   const image = (
-    <Image
-      src={src}
-      alt={`Cover Image for ${title}`}
-      className={cn('shadow-sm w-full', {
-        'hover:shadow-lg transition-shadow duration-200': slug,
-      })}
-      width={1300}
-      height={630}
-    />
+    <div style={{ position: 'relative', height: '500px' }}>
+      <Image
+        fill
+        sizes="100vw"
+        alt={`Cover Image for ${title}`}
+        src={src}
+        className={cn('shadow-small object-cover', {
+          'hover:shadow-medium transition-shadow duration-200 object-cover object-top': slug,
+        })}
+      />
+    </div>
   )
   return (
     <div className="sm:mx-0">
       {slug ? (
-        <Link as={`/posts/${slug}`} href="/posts/[slug]" aria-label={title}>
+        <Link href={`/posts/${slug}`} aria-label={title}>
           {image}
         </Link>
       ) : (
@@ -32,5 +34,3 @@ const CoverImage = ({ title, src, slug }: Props) => {
     </div>
   )
 }
-
-export default CoverImage

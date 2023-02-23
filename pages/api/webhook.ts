@@ -13,8 +13,9 @@ export default async function handler(req, res) {
     if (!pathToRevalidate) return res.status(202).json({ message: 'Alive' })
     console.info('revalidating ', pathToRevalidate)
     //yeah - lame
-    await delay(1000)
+    //await delay(1000)
     await res.revalidate(pathToRevalidate)
+    await res.revalidate('/')
     return res.json({ revalidated: true })
   } catch (err) {
     console.error(err)
