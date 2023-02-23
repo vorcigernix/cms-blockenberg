@@ -1,18 +1,15 @@
 # A statically generated blog example using Next.js, Blockenberg, and TypeScript
 
-This is the typescript version of Next.js Blog Starter [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) that fetch data from IPFS based decentralized CMS Blockenberg.
+This is the ISR version of Next.js Blog Starter [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) that fetch data from IPFS based decentralized CMS Blockenberg.
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using your IPFS files as the data source. You can easily create a new content on [Blockenberg](https://blockenberg.fission.app) and you need your Blockenberg token to find your posts on IPFS.
+This example showcases Next.js's [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration#using-on-demand-revalidation) feature using your IPFS files as the data source. You can easily create a new content on [Blockenberg](https://blockenberg.fission.app) and you need your Blockenberg token to find your posts on IPFS.
 
-The token is on your account settings page (click on the Avatar) and it needs to be present on the environment. For local development you can rename .local.env.sample file to .local.env and fill your token in.
+The token is on your account settings page (click on the Avatar) and it needs to be present on the environment. For local development you can rename .local.env.sample file to .local.env and fill your token in. You also need to set hook URL in the Blockenberg settings. This is an adress of your deployment with /api/webhook suffix, like `https://yourproject.vercel.app/api/webhook`.
 
 ## Demo
 
-[https://next-blockenberg-starter.vercel.app/](https://next-blockenberg-starter.vercel.app/)
+[https://cms-blockenberg.vercel.app/](https://cms-blockenberg.vercel.app/)
 
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/cms-blockenberg&project-name=cms-blockenberg&repository-name=cms-blockenberg)
 
 ### Related examples
 
