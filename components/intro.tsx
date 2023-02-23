@@ -1,4 +1,4 @@
-import { CMS_NAME } from '../lib/constants'
+import { CMS_NAME, CMS_URL } from '../lib/constants'
 
 const Intro = () => {
   return (
@@ -7,14 +7,14 @@ const Intro = () => {
         Blog.
       </h1>
       <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        A statically generated blog example using{' '}
+        An on demand ISR blog example using{' '}
         <a
           href="https://nextjs.org/"
           className="underline hover:text-blue-600 duration-200 transition-colors"
         >
           Next.js
         </a>{' '}
-        and {CMS_NAME}.
+        and <a className="underline hover:text-violet-600 duration-200 transition-colors" href={CMS_URL}>{CMS_NAME}</a>.
       </h4>
     </section>
   )
