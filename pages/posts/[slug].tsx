@@ -66,7 +66,6 @@ export async function getStaticProps({ params }: Params) {
       post: {
         ...post,
       },
-      revalidate: 10,
     },
   }
 }
